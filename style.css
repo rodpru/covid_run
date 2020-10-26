@@ -1,0 +1,9 @@
+canvas {
+    border: 1px solid black;
+    background-image: url(/pics/background.jpeg);
+    background-size: cover;
+};
+.container {
+    display: flex;
+    flex-direction: column;
+}
