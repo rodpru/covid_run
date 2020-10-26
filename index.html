@@ -9,13 +9,16 @@
 </head>
 <body>
     <div class="container">
-        <div class="colum">
-            <div class="row">
+            <div class="constrols">
                 <button id="start" class="btn btn-secondary btn-lg btn-block">Start</button>
             </div>
-            <canvas id="canvas" width="500" height="500"></canvas>
-
-        </div>
+            <!-- https://media.giphy.com/media/eNwB16yedci1MhLut4/giphy.gif -->
+            <iframe src="https://giphy.com/embed/eNwB16yedci1MhLut4" id="gif" width="480" height="480"></iframe>
+            <div id="score"> Score: <span id="points">200</span></div>
+            <div class="display">
+                <canvas id="canvas" width="500" height="500"></canvas>
+                <button id="reset" class="btn btn-secondary btn-lg btn-block">Finish</button>
+            </div> 
     </div>
     
 
