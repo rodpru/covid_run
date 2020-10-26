@@ -40,16 +40,16 @@ class Player {
 document.addEventListener('keydown', e => {
     switch(e.keyCode) {
         case 38: 
-            testplayer.moveUp();
+            testPlayer.moveUp();
         break;
         case 40:
-            testplayer.moveDown();
+            testPlayer.moveDown();
         break;
         case 37:
-            testplayer.moveLeft();
+            testPlayer.moveLeft();
         break;
         case 39:
-            testplayer.moveRight();
+            testPlayer.moveRight();
         break;
     }
 });
