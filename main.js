@@ -18,6 +18,7 @@ function resetGame() {
     document.getElementById('start').style.display = 'block';
     document.getElementById('reset').style.display = 'none';
     document.getElementById('gif').style.display= 'block';
+    document.getElementById('pop-up').style.display = 'none';
 }
 
 let resetBtn = document.getElementById('reset');

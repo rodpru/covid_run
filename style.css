@@ -65,5 +65,5 @@ canvas {
      top: 88px;
      background-image: url('https://media.giphy.com/media/j6ZlX8ghxNFRknObVk/giphy.gif');
      background-size: cover;
-     box-shadow: #6c757d;
+     box-shadow: 2px #6c757d;
 }
