@@ -65,19 +65,14 @@ function scoreTest() {
 }
 
 function detectColision(virus){
-    let points = document.getElementById('points');
     if (testPlayer.x + testPlayer.width > virus.x &&
         testPlayer.x < virus.x + virus.width &&
         testPlayer.y + testPlayer.height > virus.y &&
         testPlayer.y < virus.y + virus.height) {
-            userScore -= 15;
-            points.innerHTML = userScore
-            if(userScore <= 0) {
-                document.getElementById('pop-up').style.display = 'block';
-                gameRunning = false;
-
-            }
+            return true;
         }
+
+        return false;
 }
 
 function updateCanvas() {
@@ -86,12 +81,23 @@ function updateCanvas() {
     createVirus();
     scoreTest();
     if (pandemic.length > 0) {
-        pandemic.forEach(virus =>{
-            detectColision(virus);
+        for(i=0; i < pandemic.length; i++) {
+            if (detectColision(pandemic[i])) {
+                console.log("colisao");
+                userScore -= 15;
+                let points = document.getElementById('points');
+                points.innerHTML = userScore
+                pandemic.splice(i, 1);
+                if(userScore <= 0) {
+                    // document.getElementById('pop-up').style.display = 'block';
+                    // gameRunning = false
+                }
+            }
+            
             //testPlayer.crashWith(virus);
-        })
-
+        }
     }
+    
     
     if (gameRunning === true) {
         requestAnimationFrame(updateCanvas);
