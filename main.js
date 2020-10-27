@@ -3,7 +3,7 @@ document.getElementById('reset').style.display = 'none';
 document.getElementById('score').style.display = 'none';
 
 let gameRunning = true;
-
+let userScore;
 
 
 function resetGame() {
@@ -56,16 +56,23 @@ function createVirus() {
     }
 }
 function scoreTest() {
+    userScore = Math.floor(pandemic.length * 4);
     let scoreBoard = document.getElementById('points');
-    scoreBoard.innerHTML = Math.floor(pandemic.length * 5);
+    scoreBoard.innerHTML = userScore
 }
 
 function detectColision(virus){
+    let points = document.getElementById('points');
     if (testPlayer.x + testPlayer.width > virus.x &&
         testPlayer.x < virus.x + virus.width &&
         testPlayer.y + testPlayer.height > virus.y &&
         testPlayer.y < virus.y + virus.height) {
-            gameRunning = false;
+            console.log('contacto');
+            userScore -= 15;
+            points.innerHTML = userScore
+            if(userScore <= 0) {
+                gameRunning = false;
+            }
         }
 }
 
@@ -77,7 +84,7 @@ function updateCanvas() {
     if (pandemic.length > 0) {
         pandemic.forEach(virus =>{
             detectColision(virus);
-            testPlayer.crashWith(virus);
+            //testPlayer.crashWith(virus);
         })
 
     }

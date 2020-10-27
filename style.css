@@ -31,7 +31,8 @@ body {
 canvas {
     border: 3px solid grey;
     background-size: cover;
-    background-image: url('/pics/canvas_back.jpeg');
+    background-color: #E88686;
+    /* background-image: url('/pics/canvas_back.jpeg'); */
 };
 
 #start:hover {
@@ -44,4 +45,14 @@ canvas {
     border: 5px solid grey;
     color: grey;
     
+}
+#score {
+    width: 200px;
+    height: 50px;
+    margin: 8px 0, 0, 0;
+    cursor: default;
+}
+#score:hover {
+    background-color: #6c757d;
+    border: none;
 }
