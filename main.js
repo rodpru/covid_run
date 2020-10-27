@@ -19,6 +19,7 @@ function resetGame() {
     document.getElementById('reset').style.display = 'none';
     document.getElementById('gif').style.display= 'block';
     document.getElementById('pop-up').style.display = 'none';
+
 }
 
 let resetBtn = document.getElementById('reset');
@@ -58,7 +59,7 @@ function createVirus() {
     }
 }
 function scoreTest() {
-    userScore = Math.floor(pandemic.length * 4);
+    userScore = Math.floor(pandemic.length * 2);
     let scoreBoard = document.getElementById('points');
     scoreBoard.innerHTML = userScore
 }
@@ -87,6 +88,7 @@ function updateCanvas() {
     if (pandemic.length > 0) {
         pandemic.forEach(virus =>{
             detectColision(virus);
+            //testPlayer.crashWith(virus);
         })
 
     }
