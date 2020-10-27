@@ -68,7 +68,6 @@ function detectColision(virus){
         testPlayer.x < virus.x + virus.width &&
         testPlayer.y + testPlayer.height > virus.y &&
         testPlayer.y < virus.y + virus.height) {
-            console.log('contacto');
             userScore -= 15;
             points.innerHTML = userScore
             if(userScore <= 0) {
@@ -87,7 +86,6 @@ function updateCanvas() {
     if (pandemic.length > 0) {
         pandemic.forEach(virus =>{
             detectColision(virus);
-            //testPlayer.crashWith(virus);
         })
 
     }
