@@ -3,6 +3,9 @@ class Player {
         this.x = 25;
         this.y = 25;
         this.direction = 'south';
+        this.height = 50;
+        this.width = 50;
+
     }
     moveUp() {
         this.direction = 'north';
@@ -46,7 +49,6 @@ class Player {
     }
     crashWith(virus) {
          if ((this.bottom() < virus.top() || this.top() > virus.bottom() || this.right() < virus.left() || this.left() > virus.right())) {
-             console.log('crash');
          }
     }
     draw() {

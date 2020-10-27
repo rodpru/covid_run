@@ -7,6 +7,8 @@ class Virus {
         const covid = new Image();
         this.covid = covid;
         covid.src = '/pics/coronavirus-classic-attack_0.png';
+        this.height = 30;
+        this.width = 30;
     }
     left() {
         return this.x;

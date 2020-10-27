@@ -2,24 +2,40 @@ document.getElementById('canvas').style.display = "none";
 document.getElementById('reset').style.display = 'none';
 document.getElementById('score').style.display = 'none';
 
-let resetBtn = document.getElementById('reset');
-resetBtn.onclick = () => {
+let gameRunning = true;
+
+
+
+function resetGame() {
+    gameRunning = true;
     document.getElementById('canvas').style.display = "none";
-    scoreTest = 0,
-    pandemic =0,
+    let scoreBoard = document.getElementById('points');
+    scoreBoard.innerHTML = 0,
+    pandemic = [],
     virusFrequency = 0,
     document.getElementById('score').style.display = 'none';
     document.getElementById('start').style.display = 'block';
     document.getElementById('reset').style.display = 'none';
+    document.getElementById('gif').style.display= 'block';
 }
 
-document.getElementById('start').onclick = () => {
+let resetBtn = document.getElementById('reset');
+resetBtn.onclick = () => {
+    resetGame();
+}
+
+function startGame() {
+    gameRunning = true;
     document.getElementById('start').style.display = 'none';
     document.getElementById('reset').style.display = 'block';
     document.getElementById('canvas').style.display = "block";
     document.getElementById('score').style.display = 'block';
     document.getElementById('gif').style.display= 'none';
     updateCanvas();
+}
+
+document.getElementById('start').onclick = () => {
+    startGame();
 }
 
 const canvas = document.getElementById('canvas');
@@ -44,17 +60,31 @@ function scoreTest() {
     scoreBoard.innerHTML = Math.floor(pandemic.length * 5);
 }
 
+function detectColision(virus){
+    if (testPlayer.x + testPlayer.width > virus.x &&
+        testPlayer.x < virus.x + virus.width &&
+        testPlayer.y + testPlayer.height > virus.y &&
+        testPlayer.y < virus.y + virus.height) {
+            gameRunning = false;
+        }
+}
+
 function updateCanvas() {
     ctx.clearRect(0, 0, 500, 500);
     testPlayer.draw();
     createVirus();
     scoreTest();
-    pandemic.forEach(virus =>{
-        testPlayer.crashWith(virus);
-    })
+    if (pandemic.length > 0) {
+        pandemic.forEach(virus =>{
+            detectColision(virus);
+            testPlayer.crashWith(virus);
+        })
+
+    }
     
-    
-    requestAnimationFrame(updateCanvas);
+    if (gameRunning === true) {
+        requestAnimationFrame(updateCanvas);
+    }
 }
 
-// updateCanvas();
+// updateCanvas()
