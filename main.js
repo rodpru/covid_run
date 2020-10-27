@@ -1,6 +1,7 @@
 document.getElementById('canvas').style.display = "none";
 document.getElementById('reset').style.display = 'none';
 document.getElementById('score').style.display = 'none';
+document.getElementById('pop-up').style.display = 'none';
 
 let gameRunning = true;
 let userScore;
@@ -71,7 +72,9 @@ function detectColision(virus){
             userScore -= 15;
             points.innerHTML = userScore
             if(userScore <= 0) {
+                document.getElementById('pop-up').style.display = 'block';
                 gameRunning = false;
+
             }
         }
 }

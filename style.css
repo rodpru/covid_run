@@ -32,7 +32,6 @@ canvas {
     border: 3px solid grey;
     background-size: cover;
     background-color: #E88686;
-    /* background-image: url('/pics/canvas_back.jpeg'); */
 };
 
 #start:hover {
@@ -55,4 +54,16 @@ canvas {
 #score:hover {
     background-color: #6c757d;
     border: none;
+}
+
+#pop-up {
+    position: absolute;
+     background-color: white;
+     width: 500px;
+     height: 400px;
+     left: 30%;
+     top: 88px;
+     background-image: url('https://media.giphy.com/media/j6ZlX8ghxNFRknObVk/giphy.gif');
+     background-size: cover;
+     box-shadow: #6c757d;
 }
