@@ -18,8 +18,19 @@ body {
 .container-left {
     margin-top: 20%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
+}
+.container-left img {
+    margin-left: 40px;
+}
+.container-left button {
+    margin-left: 96px;
+    border: 5px solid black;
+    color: black;
+    background-color: transparent;
+    font-weight: bold;
+    border-radius: 20px;
 }
 .container-right {
     margin-right: 20px;
@@ -34,28 +45,6 @@ canvas {
     background-color: black;
     /* background-color: #E88686; */
 };
-
-#start:hover {
-    background-color: black;
-    border: 5px solid grey;
-    color: grey;
-}
-#reset:hover {
-    background-color: black;
-    border: 5px solid grey;
-    color: grey;
-    
-}
-#score {
-    width: 200px;
-    height: 50px;
-    margin: 8px 0, 0, 0;
-    cursor: default;
-}
-#score:hover {
-    background-color: #6c757d;
-    border: none;
-}
 
 #health-bar {
     -webkit-box-sizing: border-box;
@@ -100,4 +89,14 @@ canvas {
      background-image: url('https://media.giphy.com/media/j6ZlX8ghxNFRknObVk/giphy.gif');
      background-size: cover;
      box-shadow: 2px #6c757d;
+     z-index: 1;
+}
+
+.title {
+    position: absolute;
+    /* margin-left: 97px; */
+    margin-top: 69px;
+    font-size: 70px;
+    font-family: 'Henny Penny', cursive;
+    z-index: 0.5;
 }
