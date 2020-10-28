@@ -3,17 +3,20 @@ document.getElementById('reset').style.display = 'none';
 document.getElementById('score').style.display = 'none';
 document.getElementById('pop-up').style.display = 'none';
 
+//document.getElementById('bar').style.width = '100%';
+
 let gameRunning = true;
 let userScore = 100;
 
-
 function resetGame() {
-    gameRunning = true;
+    gameRunning = false;
     document.getElementById('canvas').style.display = "none";
     let scoreBoard = document.getElementById('points');
     scoreBoard.innerHTML = 0,
     pandemic = [],
     virusFrequency = 0,
+    userScore = 100;
+    document.getElementById('bar').style.width = `${userScore * 5}px`;
     document.getElementById('score').style.display = 'none';
     document.getElementById('start').style.display = 'block';
     document.getElementById('reset').style.display = 'none';
@@ -99,15 +102,21 @@ function updateCanvas() {
         for(let i = 0; i < cure.length; i++){
             if(detectColision(cure[i])) {
                 userScore += 10;
+                document.getElementById('bar').style.width = `${userScore * 5}px`;
+
+                let lifeUp = document.getElementById('points');
+                lifeUp.innerHTML = userScore;
                 cure.splice(i, 1);
             }
         }
     }
     if (pandemic.length > 0) {
-        for(i=0; i < pandemic.length; i++) {
+        for(let i=0; i < pandemic.length -1 ; i++) {
             if (detectColision(pandemic[i])) {
                 console.log("colisao");
                 userScore -= 10;
+                document.getElementById('bar').style.width = `${userScore * 5}px`;
+
                 let points = document.getElementById('points');
                 points.innerHTML = userScore
                 pandemic.splice(i, 1);
@@ -116,8 +125,6 @@ function updateCanvas() {
                     gameRunning = false
                 }
             }
-            
-            //testPlayer.crashWith(virus);
         }
     }
     
