@@ -31,7 +31,8 @@ body {
 canvas {
     border: 3px solid grey;
     background-size: cover;
-    background-color: #E88686;
+    background-color: black;
+    /* background-color: #E88686; */
 };
 
 #start:hover {

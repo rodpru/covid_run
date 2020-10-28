@@ -84,13 +84,13 @@ function updateCanvas() {
         for(i=0; i < pandemic.length; i++) {
             if (detectColision(pandemic[i])) {
                 console.log("colisao");
-                userScore -= 15;
+                userScore -= 10;
                 let points = document.getElementById('points');
                 points.innerHTML = userScore
                 pandemic.splice(i, 1);
                 if(userScore <= 0) {
-                    // document.getElementById('pop-up').style.display = 'block';
-                    // gameRunning = false
+                    document.getElementById('pop-up').style.display = 'block';
+                    gameRunning = false
                 }
             }
             
