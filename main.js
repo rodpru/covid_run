@@ -4,7 +4,7 @@ document.getElementById('score').style.display = 'none';
 document.getElementById('pop-up').style.display = 'none';
 
 let gameRunning = true;
-let userScore;
+let userScore = 100;
 
 
 function resetGame() {
@@ -49,7 +49,7 @@ let pandemic = [];
 let virusFrequency = 0;
 
 function createVirus() {
-    virusFrequency++
+    virusFrequency++;
     if(virusFrequency % 120 === 0) {
         pandemic.push(new Virus());
     }
@@ -58,11 +58,25 @@ function createVirus() {
         pandemic[i].draw();
     }
 }
-function scoreTest() {
-    userScore = Math.floor(pandemic.length * 2);
-    let scoreBoard = document.getElementById('points');
-    scoreBoard.innerHTML = userScore
+
+let cure = [];
+let vacineFrequency = 0;
+function createVacine() {
+    vacineFrequency++;
+    if(vacineFrequency % 1000 === 0) {
+        cure.push(new Vacine());
+    }
+    for(let p = 0; p < cure.length; p++) {
+        cure[p].update();
+        cure[p].draw();
+    }
 }
+
+// function scoreTest() {
+//     userScore = Math.floor(pandemic.length * 2);
+//     let scoreBoard = document.getElementById('points');
+//     scoreBoard.innerHTML = userScore
+// }
 
 function detectColision(virus){
     if (testPlayer.x + testPlayer.width > virus.x &&
@@ -79,7 +93,16 @@ function updateCanvas() {
     ctx.clearRect(0, 0, 500, 500);
     testPlayer.draw();
     createVirus();
-    scoreTest();
+    createVacine();
+    // scoreTest();
+    if ( cure.length > 0) {
+        for(let i = 0; i < cure.length; i++){
+            if(detectColision(cure[i])) {
+                userScore += 10;
+                cure.splice(i, 1);
+            }
+        }
+    }
     if (pandemic.length > 0) {
         for(i=0; i < pandemic.length; i++) {
             if (detectColision(pandemic[i])) {
