@@ -105,10 +105,15 @@ function detectColision(virus){
 
 // --> what makes everything run
 function updateCanvas() {
+    // --> clean canvas
     ctx.clearRect(0, 0, 500, 500);
+    // --> create player
     testPlayer.draw();
+    // --> create virus
     createVirus();
+    // --> create vacine
     createVacine();
+    // --> vacine colision
     if ( cure.length > 0) {
         for(let i = 0; i < cure.length; i++){
             if(detectColision(cure[i])) {
@@ -117,13 +122,13 @@ function updateCanvas() {
                     userScore += 10;
                 }
                 document.getElementById('bar').style.width = `${userScore * 5}px`;
-
                 let lifeUp = document.getElementById('points');
                 lifeUp.innerHTML = userScore;
                 cure.splice(i, 1);
             }
         }
     }
+    // virus colision
     if (pandemic.length > 0) {
         for(let i=0; i < pandemic.length -1 ; i++) {
             if (detectColision(pandemic[i])) {
@@ -144,8 +149,7 @@ function updateCanvas() {
             }
         }
     }
-    
-    
+    // --> loop that keeps drawing
     if (gameRunning === true) {
         requestAnimationFrame(updateCanvas);
     }
