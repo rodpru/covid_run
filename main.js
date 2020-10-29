@@ -3,7 +3,6 @@ document.getElementById('canvas').style.display = "none";
 document.getElementById('reset').style.display = 'none';
 document.getElementById('pop-up').style.display = 'none';
 
-//document.getElementById('bar').style.width = '100%';
 
 let gameRunning = true;
 let userScore = 100;
@@ -26,6 +25,7 @@ function resetGame() {
 
 let resetBtn = document.getElementById('reset');
 resetBtn.onclick = () => {
+    backSound.pause();
     resetGame();
 }
 
@@ -39,6 +39,7 @@ function startGame() {
 }
 
 document.getElementById('start').onclick = () => {
+    backSound.play();
     startGame();
 }
 
@@ -73,11 +74,13 @@ function createVacine() {
     }
 }
 
-// function scoreTest() {
-//     userScore = Math.floor(pandemic.length * 2);
-//     let scoreBoard = document.getElementById('points');
-//     scoreBoard.innerHTML = userScore
-// }
+
+// --> Sounds
+let vacineSound = new Audio ('/sounds/vacine.wav');
+let virusSound = new Audio ('/sounds/virus.wav');
+let backSound = new Audio ('/sounds/background - 5m loop.mp3');
+
+
 
 function detectColision(virus){
     if (testPlayer.x + testPlayer.width > virus.x &&
@@ -99,6 +102,7 @@ function updateCanvas() {
     if ( cure.length > 0) {
         for(let i = 0; i < cure.length; i++){
             if(detectColision(cure[i])) {
+                vacineSound.play();
                 userScore += 10;
                 document.getElementById('bar').style.width = `${userScore * 5}px`;
 
@@ -111,6 +115,7 @@ function updateCanvas() {
     if (pandemic.length > 0) {
         for(let i=0; i < pandemic.length -1 ; i++) {
             if (detectColision(pandemic[i])) {
+                virusSound.play();
                 userScore -= 10;
                 document.getElementById('bar').style.width = `${userScore * 5}px`;
 
@@ -119,6 +124,7 @@ function updateCanvas() {
                 pandemic.splice(i, 1);
                 if(userScore <= 0) {
                     document.getElementById('pop-up').style.display = 'block';
+                    backSound.pause();
                     gameRunning = false
                 }
             }
