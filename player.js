@@ -53,13 +53,13 @@ class Player {
     }
     draw() {
         const imageSouth = new Image();
-        imageSouth.src = '/pics/captura de ecrã 2020-10-26, às 10.38.43.png'
+        imageSouth.src = '/pics/character-front.png'
         const imageNorth = new Image();
-        imageNorth.src = '/pics/north_preview_rev_1.png'
+        imageNorth.src = '/pics/character-back.png'
         const imageEast = new Image();
-        imageEast.src = '/pics/east_preview_rev_1.png'
+        imageEast.src = '/pics/character-right.png'
         const imageWest = new Image();
-        imageWest.src = '/pics/west_preview_rev_1.png'
+        imageWest.src = '/pics/character-left.png'
         if (this.direction === 'north') {
             ctx.drawImage(imageNorth, this.x, this.y, 50, 50);
         } else if (this.direction === 'west'){

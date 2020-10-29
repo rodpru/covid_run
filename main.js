@@ -86,8 +86,8 @@ function createVacine() {
 // --> Sounds
 let vacineSound = new Audio ('/sounds/vacine.wav');
 let virusSound = new Audio ('/sounds/virus.wav');
-let backSound = new Audio ('/sounds/background - 5m loop.mp3');
-let gameOver = new Audio ('/sounds/export_ofoct.com.mp3');
+let backSound = new Audio ('/sounds/background.mp3');
+let gameOver = new Audio ('/sounds/export_ofoct.mp3');
 
 
 // --> Colision
