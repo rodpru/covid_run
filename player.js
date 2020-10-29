@@ -53,7 +53,7 @@ class Player {
     }
     draw() {
         const imageSouth = new Image();
-        imageSouth.src = '/pics/Captura de ecrã 2020-10-26, às 10.38.43.png'
+        imageSouth.src = '/pics/captura de ecrã 2020-10-26, às 10.38.43.png'
         const imageNorth = new Image();
         imageNorth.src = '/pics/north_preview_rev_1.png'
         const imageEast = new Image();
