@@ -23,12 +23,7 @@ function resetGame() {
 
 }
 
-let resetBtn = document.getElementById('reset');
-resetBtn.onclick = () => {
-    backSound.pause();
-    resetGame();
-}
-
+// -- Start 
 function startGame() {
     gameRunning = true;
     document.getElementById('start').style.display = 'none';
@@ -38,18 +33,27 @@ function startGame() {
     updateCanvas();
 }
 
+// -->  Start and Reset BTN
+let resetBtn = document.getElementById('reset');
+resetBtn.onclick = () => {
+    backSound.pause();
+    resetGame();
+}
+
 document.getElementById('start').onclick = () => {
     backSound.play();
     startGame();
 }
 
+
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 let testPlayer = new Player();
 
+
+// --> virus
 let pandemic = [];
 let virusFrequency = 0;
-
 function createVirus() {
     virusFrequency++;
     if(virusFrequency % 120 === 0) {
@@ -61,6 +65,7 @@ function createVirus() {
     }
 }
 
+// --> bonus ++
 let cure = [];
 let vacineFrequency = 0;
 function createVacine() {
@@ -81,7 +86,7 @@ let virusSound = new Audio ('/sounds/virus.wav');
 let backSound = new Audio ('/sounds/background - 5m loop.mp3');
 
 
-
+// --> Colision
 function detectColision(virus){
     if (testPlayer.x + testPlayer.width > virus.x &&
         testPlayer.x < virus.x + virus.width &&
@@ -93,17 +98,20 @@ function detectColision(virus){
         return false;
 }
 
+
+// 
 function updateCanvas() {
     ctx.clearRect(0, 0, 500, 500);
     testPlayer.draw();
     createVirus();
     createVacine();
-    // scoreTest();
     if ( cure.length > 0) {
         for(let i = 0; i < cure.length; i++){
             if(detectColision(cure[i])) {
                 vacineSound.play();
-                userScore += 10;
+                if (userScore <= 490) {
+                    userScore += 10;
+                }
                 document.getElementById('bar').style.width = `${userScore * 5}px`;
 
                 let lifeUp = document.getElementById('points');
