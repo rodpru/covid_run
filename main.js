@@ -1,3 +1,4 @@
+// --> Starting hidden blocks
 document.getElementById('score').style.display = 'none';
 document.getElementById('canvas').style.display = "none";
 document.getElementById('reset').style.display = 'none';
@@ -7,6 +8,7 @@ document.getElementById('pop-up').style.display = 'none';
 let gameRunning = true;
 let userScore = 100;
 
+// --> Reset
 function resetGame() {
     gameRunning = false;
     document.getElementById('canvas').style.display = "none";
@@ -23,7 +25,7 @@ function resetGame() {
 
 }
 
-// -- Start 
+// --> Start 
 function startGame() {
     gameRunning = true;
     document.getElementById('start').style.display = 'none';
@@ -37,6 +39,7 @@ function startGame() {
 let resetBtn = document.getElementById('reset');
 resetBtn.onclick = () => {
     backSound.pause();
+    gameOver.pause();
     resetGame();
 }
 
@@ -84,6 +87,7 @@ function createVacine() {
 let vacineSound = new Audio ('/sounds/vacine.wav');
 let virusSound = new Audio ('/sounds/virus.wav');
 let backSound = new Audio ('/sounds/background - 5m loop.mp3');
+let gameOver = new Audio ('/sounds/export_ofoct.com.mp3');
 
 
 // --> Colision
@@ -99,7 +103,7 @@ function detectColision(virus){
 }
 
 
-// 
+// --> what makes everything run
 function updateCanvas() {
     ctx.clearRect(0, 0, 500, 500);
     testPlayer.draw();
@@ -109,7 +113,7 @@ function updateCanvas() {
         for(let i = 0; i < cure.length; i++){
             if(detectColision(cure[i])) {
                 vacineSound.play();
-                if (userScore <= 490) {
+                if (userScore < 100) {
                     userScore += 10;
                 }
                 document.getElementById('bar').style.width = `${userScore * 5}px`;
@@ -133,6 +137,8 @@ function updateCanvas() {
                 if(userScore <= 0) {
                     document.getElementById('pop-up').style.display = 'block';
                     backSound.pause();
+                    gameOver.play();
+                    gameOver.play();
                     gameRunning = false
                 }
             }
@@ -145,4 +151,3 @@ function updateCanvas() {
     }
 }
 
-// updateCanvas()
